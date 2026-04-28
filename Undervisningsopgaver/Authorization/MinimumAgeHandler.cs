@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
+namespace Undervisningsopgaver.Authorization;
 // Handler definerer HOW vi tjekker kravet
 public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
 {

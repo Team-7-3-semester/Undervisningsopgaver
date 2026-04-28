@@ -1,3 +1,5 @@
+namespace Undervisningsopgaver.DTOs;
+
 public record RegisterDto(
     string Email,
     string Password,

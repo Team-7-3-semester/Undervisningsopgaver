@@ -1,3 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Undervisningsopgaver.DTOs;
+
+namespace Undervisningsopgaver.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class SecureController : ControllerBase

@@ -1,3 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Undervisningsopgaver.DTOs;
+using Undervisningsopgaver.Models;
+using Undervisningsopgaver.Services;
+
+namespace Undervisningsopgaver.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase

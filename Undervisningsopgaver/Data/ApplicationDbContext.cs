@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Undervisningsopgaver.Models;
+
+namespace Undervisningsopgaver.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Undervisningsopgaver.DTOs;
 
 namespace Undervisningsopgaver.Controllers;
 

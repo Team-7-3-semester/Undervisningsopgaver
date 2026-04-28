@@ -1,6 +1,8 @@
 // Models/ApplicationUser.cs - Custom user med ekstra properties
 using Microsoft.AspNetCore.Identity;
 
+namespace Undervisningsopgaver.Models;
+
 public class ApplicationUser : IdentityUser
 {
     public string FirstName { get; set; } = string.Empty;
