@@ -25,9 +25,25 @@ public class TokenService : ITokenService
             new Claim(JwtRegisteredClaimNames.Sub, user.Id),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim("FirstName", user.FirstName),
-            new Claim("LastName", user.LastName)
+            new Claim("LastName", user.LastName),
+            new Claim("Department", "IT"),
+            new Claim("BirthDate", "2000-01-01")
         };
+            
+//         };
+//         };            claims.Add(new Claim("BirthDate", "2000-01-01"));
 
+        // Tilføj Department claim, hvis det findes på brugeren
+        if (!string.IsNullOrWhiteSpace(user.Department))
+        {
+            claims.Add(new Claim("Department", user.Department));
+        }
+
+        // Tilføj BirthDate claim, hvis det findes på brugeren
+        if (user.BirthDate.HasValue)
+        {
+            claims.Add(new Claim("BirthDate", user.BirthDate.Value.ToString("yyyy-MM-dd")));
+        }
         foreach (var role in roles)
         {
             claims.Add(new Claim(ClaimTypes.Role, role));
