@@ -8,13 +8,13 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
         AuthorizationHandlerContext context,
         MinimumAgeRequirement requirement)
     {
-        // 1️⃣ Find BirthDate-claim i tokenet
+        // Find BirthDate-claim i tokenet
         var birthDateClaim = context.User.FindFirst("BirthDate");
 
         if (birthDateClaim is null)
             return Task.CompletedTask; // Ingen claim = krav ikke opfyldt
 
-        // 2️⃣ Beregn alder
+        // Beregn alder
         if (DateTime.TryParse(birthDateClaim.Value, out var birthDate))
         {
             var age = DateTime.Today.Year - birthDate.Year;
@@ -22,7 +22,7 @@ public class MinimumAgeHandler : AuthorizationHandler<MinimumAgeRequirement>
             if (birthDate.Date > DateTime.Today.AddYears(-age))
                 age--;
 
-            // 3️⃣ Godkend hvis alder opfylder kravet
+            // Godkend hvis alder opfylder kravet
             if (age >= requirement.MinimumAge)
                 context.Succeed(requirement); // ✅ Krav opfyldt!
         }
