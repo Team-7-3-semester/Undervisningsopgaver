@@ -38,4 +38,15 @@ public class SecureController : ControllerBase
     [HttpGet("management")]
     public IActionResult ManagementEndpoint()
         => Ok(new { Message = "Adgang til ledelse" });
+
+    [Authorize(Policy = "ITDepartment")]
+    [HttpGet("it-only")]
+    public IActionResult ItOnlyEndpoint()
+        => Ok(new { Message = "IT-afdelingens hemmelighed" });
+
+    [Authorize(Policy = "Over18")]
+    [HttpGet("voksen")]
+    public IActionResult VoksenEndpoint()
+        => Ok(new { Message = "Voksenkontent" });
+
 }

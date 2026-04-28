@@ -67,8 +67,21 @@ builder.Services.AddAuthorization(options =>
 {
     // Definerer en policy "Over18", som bruger vores custom requirement.
     // Nu kan du bruge [Authorize(Policy = "Over18")] på dine endpoints.
+    /* options.AddPolicy("Over18", policy =>
+        policy.Requirements.Add(new MinimumAgeRequirement(18))); */
+    options.AddPolicy("RequireAdminRole", policy =>
+        policy.RequireRole("Admin"));
+
+    options.AddPolicy("ITDepartment", policy =>
+        policy.RequireClaim("Department", "IT"));
+
+    options.AddPolicy("HighSecurity", policy =>
+        policy.RequireClaim("SecurityLevel", "3", "4", "5"));
+
+    // Bruger MinimumAgeRequirement fra Opgave 4.2
     options.AddPolicy("Over18", policy =>
         policy.Requirements.Add(new MinimumAgeRequirement(18)));
+
 });
 
 builder.Services.AddControllers();
